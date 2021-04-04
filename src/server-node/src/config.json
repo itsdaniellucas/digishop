@@ -1,0 +1,16 @@
+{
+    "JWT": {
+        "Secret": "pm9KzJkBEVBmVCzfNbe2uneYJ4GB2CIMbO7Q4bv9NH4CH2JWQtqjSkDfj3ifQ1W",
+        "Audience": "http://digishop.io",
+        "Issuer": "DigiShop"
+    },
+    "DB": {
+        "Url": "mongodb://admin:2nb0W8K6A@ds_db:27017/",
+        "Name": "DigiShop"
+    },
+    "port": 13002,
+    "CORS": {
+        "origin": "*",
+        "methods": ["GET", "POST"]
+    }
+}

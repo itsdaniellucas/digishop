@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+    digishop:
+        image: digishop:dev
+        container_name: ds_web
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "13002:13002"
+        links:
+            - "ds_db"
+        depends_on:
+            - "ds_db"
+        volumes:
+            - <path/to/your/host/dir>:/usr/src/app/public
+            #e.g. C:\\digishop\\web
+    
+    ds_react_next:
+        image: digishop-react-next:dev
+        container_name: ds_react_next
+        build:
+            context: ../client-react-next
+            dockerfile: Dockerfile
+        ports:
+            - "13001:13001"
+        links:
+            - "digishop"
+        depends_on:
+            - "digishop"
+    
+    ds_db:
+        image: mongo:latest
+        container_name: ds_db
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: 2nb0W8K6A
+        ports:
+            - "27017:27017"
+        volumes:
+            - <path/to/your/host/dir>:/data/db
+            #e.g. C:\\digishop\\db
